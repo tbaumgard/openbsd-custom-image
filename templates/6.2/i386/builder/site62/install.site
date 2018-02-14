@@ -1,0 +1,16 @@
+#!/bin/sh
+# Use this script to complete a system after an unattended installation. See
+# https://www.openbsd.org/faq/faq4.html#site for more information about
+# install.site scripts.
+
+RELEASE="$(uname -r)"
+REL="${RELEASE%.[0-9]}${RELEASE#[0-9].}"
+
+# Let puffy execute the build script as root using doas(1) and doas.conf(5).
+echo "echo 'permit puffy as root cmd /home/puffy/build${REL}.sh' >> /etc/doas.conf" >> /etc/rc.firsttime
+
+# eject(1) the CD so that the installer isn't loaded on reboot.
+eject /dev/rcd0c
+
+# Remove this script from the file system.
+rm /install.site
