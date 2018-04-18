@@ -18,9 +18,8 @@ The build script must be run as root.
 # Display all parameter descriptions and instructions.
 build62.sh --help
 
-# Build a release using the "example" template. Use a mirror close to you rather
-# than the primary mirror. See: https://www.openbsd.org/ftp.html
-build62.sh --template example --mirror https://ftp.openbsd.org/pub/OpenBSD
+# Build a release using the "example" template.
+build62.sh --template example --mirror https://cdn.openbsd.org/pub/OpenBSD
 ```
 
 ## License

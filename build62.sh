@@ -8,7 +8,7 @@
 
 help() {
 	cat <<EOF
-Usage: $(basename "$0") [options] --template example --mirror https://ftp.openbsd.org/pub/OpenBSD
+Usage: $(basename "$0") [options] --template example --mirror https://cdn.openbsd.org/pub/OpenBSD
 
 --help
 Display this help message and exit.

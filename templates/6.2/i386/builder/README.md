@@ -7,9 +7,8 @@ The password on the pre-built image for the `puffy` account is `puffy`, and the 
 ```sh
 # Log in to the build machine as puffy...
 
-# Build a release using the "example" template. Use a mirror close to you rather
-# than the primary mirror. See: https://www.openbsd.org/ftp.html
-doas -u root /home/puffy/build62.sh --template example --mirror https://ftp.openbsd.org/pub/OpenBSD
+# Build a release using the "example" template.
+doas -u root /home/puffy/build62.sh --template example --mirror https://cdn.openbsd.org/pub/OpenBSD
 
 # Clear out the images if necessary.
 doas -u root rm -rf /home/puffy/images

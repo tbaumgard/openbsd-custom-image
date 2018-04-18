@@ -27,9 +27,8 @@ Simple usage instructions are included below. More detailed instructions and not
 # Display all parameter descriptions and instructions.
 buildXX.sh --help
 
-# Build a release using the "example" template. Use a mirror close to you rather
-# than the primary mirror. See: https://www.openbsd.org/ftp.html
-buildXX.sh --template example --mirror https://ftp.openbsd.org/pub/OpenBSD
+# Build a release using the "example" template.
+buildXX.sh --template example --mirror https://cdn.openbsd.org/pub/OpenBSD
 ```
 
 ## Build Images
