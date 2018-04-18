@@ -1,0 +1,15 @@
+--- install.sub	Wed Apr 18 07:43:08 2018
++++ install.sub	Wed Apr 18 07:44:28 2018
+@@ -2543,2 +2543,2 @@
+ 	sed -n '/columns/{s/^.* \([0-9]*\) columns.*$/\1/;p;}')
+ ((COLUMNS == 0)) && COLUMNS=80
+
++if [ "${AI_MODE}" == "install" -a -x /auto_install_prep.site ]; then
++	/auto_install_prep.site
++elif [ "${AI_MODE}" == "upgrade" -a -x /auto_upgrade_prep.site ]; then
++	/auto_upgrade_prep.site
++fi
++
+ if ! $AUTO; then
+ 	cat <<__EOT
+ At any prompt except password prompts you can escape to a shell by

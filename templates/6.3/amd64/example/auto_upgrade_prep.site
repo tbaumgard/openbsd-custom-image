@@ -1,0 +1,5 @@
+#!/bin/sh
+# Use this script to prepare a system immediately before an unattended upgrade
+# begins. Not all commands are available when upgrading.
+
+echo "Executing the auto_upgrade_prep.site script."
