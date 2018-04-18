@@ -25,6 +25,7 @@ cp -Rp "${TEMPLATE_DIR}/site${REL}/." "${TEMP_SITE}"
 
 # Add a copy rdsetroot so that src.tar.gz doesn't have to be downloaded and so
 # that rdsetroot doesn't have to be compiled.
+mkdir -p "${TEMP_SITE}/usr/local/sbin"
 cp -Rp /usr/local/sbin/rdsetroot "${TEMP_SITE}/usr/local/sbin/rdsetroot"
 
 # Copy over all the templates specific to the release and architecture.
