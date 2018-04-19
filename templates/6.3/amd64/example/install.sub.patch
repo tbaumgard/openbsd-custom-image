@@ -1,9 +1,9 @@
---- install.sub	Wed Apr 18 07:43:08 2018
-+++ install.sub	Wed Apr 18 07:44:28 2018
-@@ -2543,2 +2543,2 @@
+--- install.sub	Wed Apr 18 21:15:02 2018
++++ install.sub	Wed Apr 18 21:20:22 2018
+@@ -2543,6 +2543,12 @@
  	sed -n '/columns/{s/^.* \([0-9]*\) columns.*$/\1/;p;}')
  ((COLUMNS == 0)) && COLUMNS=80
-
+ 
 +if [ "${AI_MODE}" == "install" -a -x /auto_install_prep.site ]; then
 +	/auto_install_prep.site
 +elif [ "${AI_MODE}" == "upgrade" -a -x /auto_upgrade_prep.site ]; then
