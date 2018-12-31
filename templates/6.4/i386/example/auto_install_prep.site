@@ -1,0 +1,5 @@
+#!/bin/sh
+# Use this script to prepare a system immediately before an unattended
+# installation begins. Not all commands are available when installing.
+
+echo "Executing the auto_install_prep.site script."
