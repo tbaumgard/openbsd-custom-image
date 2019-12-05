@@ -1,0 +1,15 @@
+--- install.sub	2019-04-02 03:51:49 -0500
++++ install.sub	2019-12-04 18:42:18 -0600
+@@ -3335,6 +3335,12 @@
+ 	sed -n '/columns/{s/^.* \([0-9]*\) columns.*$/\1/;p;}')
+ ((COLUMNS == 0)) && COLUMNS=80
+ 
++if [ "${AI_MODE}" == "install" -a -x /auto_install_prep.site ]; then
++	/auto_install_prep.site
++elif [ "${AI_MODE}" == "upgrade" -a -x /auto_upgrade_prep.site ]; then
++	/auto_upgrade_prep.site
++fi
++
+ # Interactive or automatic installation?
+ if ! $AI; then
+ 	cat <<__EOT

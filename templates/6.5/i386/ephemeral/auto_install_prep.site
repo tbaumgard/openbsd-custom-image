@@ -1,0 +1,30 @@
+#!/bin/sh
+# Use this script to prepare a system immediately before an unattended
+# installation begins. Not all commands are available when installing.
+
+# Overwrite the drive if it wasn't previously encrypted.
+# dd if=/dev/urandom of=/dev/rwd0c bs=1m
+
+# Clear the beginning of the disk to avoid issues with disk utilities.
+dd if=/dev/zero of=/dev/rwd0c bs=1m count=10
+
+# Set up the MBR and disklabel. This creates a 10 MB boot disk partition, a 10
+# MB keydisk partition, and the rest of the space is devoted to the partition
+# that will hold the OS and all user data. The order of the partitions is
+# important.
+fdisk -iy wd0
+echo "a a\n\n10m\n\na d\n\n10m\nRAID\na e\n\n*\nRAID\nw\nq\n" | disklabel -E wd0
+
+# Create a new file system for the boot disk and set up full-disk encryption on
+# the OS/data disk using the keydisk.
+newfs wd0a
+bioctl -c C -k wd0d -l wd0e softraid0
+
+# Clear the beginning of the OS/data disk to avoid issues with disk utilities.
+dd if=/dev/zero of=/dev/rsd0c bs=1m count=1
+
+# Randomize the hostname and DNS domain name if many of these systems are
+# expected to be generated on the fly.
+# myrandom="$RANDOM"
+# echo "System hostname = puffy$myrandom" >> /auto_install.conf
+# echo "DNS domain name = puffy$myrandom.example.net" >> /auto_install.conf
