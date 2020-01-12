@@ -29,6 +29,9 @@ buildXX.sh --help
 
 # Build a release using the "example" template.
 buildXX.sh --template example --mirror https://cdn.openbsd.org/pub/OpenBSD
+
+# Note: as of OpenBSD 6.6, the --mirror switch is unnecessary.
+buildXX.sh --template example
 ```
 
 ## Build Images
