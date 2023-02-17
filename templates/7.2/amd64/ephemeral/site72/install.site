@@ -1,0 +1,22 @@
+#!/bin/sh
+# Use this script to complete a system after an unattended installation. See
+# https://www.openbsd.org/faq/faq4.html#site for more information
+# about install.site scripts.
+
+# eject(1) the CD so that the installer isn't loaded on reboot.
+eject /dev/rcd0c
+
+# Set the system to overwrite the keydisk with random data and then zeroes.
+echo "dd if=/dev/urandom of=/dev/rsd0d" >> /etc/rc.firsttime
+echo "dd if=/dev/zero of=/dev/rsd0d" >> /etc/rc.firsttime
+
+# Mount the boot drive to modify it.
+mount /dev/sd0a /mnt
+
+# Tweak the default boot configuration to boot the correct disk and partition.
+mkdir /mnt/etc
+echo "boot sr0a:/bsd" > /mnt/etc/boot.conf
+
+# Install a new bootstrap to the boot drive.
+cp /usr/mdec/boot /mnt/boot
+installboot -v -r /mnt sd0 /usr/mdec/biosboot /usr/mdec/boot
