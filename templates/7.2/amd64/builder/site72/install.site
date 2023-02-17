@@ -1,0 +1,10 @@
+#!/bin/sh
+# Use this script to complete a system after an unattended installation. See
+# https://www.openbsd.org/faq/faq4.html#site for more information about
+# install.site scripts.
+
+# eject(1) the CD so that the installer isn't loaded on reboot.
+eject /dev/rcd0c
+
+# Remove this script from the file system.
+rm /install.site
